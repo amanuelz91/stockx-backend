@@ -1,11 +1,9 @@
 require('dotenv').config()
 
 const logger = require('pino')()
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
-
 const routes = require('./routes/routes')
 
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -16,7 +14,14 @@ app.use(function (req, res, next) {
   });
 
 app.use("/", routes)
-
+app.use((req, res, next) => {
+    req.query = new Proxy(req.query, {
+      get: (target, name) => target[Object.keys(target)
+        .find(key => key.toLowerCase() === name.toLowerCase())]
+    })
+  
+    next();
+  });
 app.get('/', (req, res) => {
     res.json({"message": "StockX API default endpoint"})
 })

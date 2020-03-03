@@ -1,5 +1,9 @@
-var knex = require('../database/knex');
 const logger = require('pino')()
+const {logAndThrow} = require('../utils')
+
+var knex = require('../database/knex');
+// const { check, oneOf, validationResult } = require('express-validator');
+const { body, query } = require('express-validator')
 
 
 function _Shoes() {
@@ -12,8 +16,7 @@ const _getAll = async () => {
 
 const _getShoeByName = (name) => {
     return _Shoes().whereRaw(`LOWER(name) = ?`,[`${name}`]).catch(e=>{
-        logger.info('error in getting shoes by name',e)
-        throw(e)
+        logAndThrow(e,'error in getting shoes by name')
     }); 
 }
 
@@ -37,13 +40,29 @@ const _updateTrueToSize = async(name,true_to_size) => {
         .whereRaw(`LOWER(name) = ?`,[`${name}`])
         .catch(e=>{throw(e)})
     } catch(e){
-        logger.info('error in updating true to size ',e)
-        throw(e)
+        logAndThrow(e,'error in updating true to size')
+    }
+}
+
+const validate = (method) => {
+    switch(method){
+        case 'updateTrueToSize': {
+            return[
+                    query('shoe').exists()
+                    // Check if shoe exists in dB
+                    // Hardcoded for now but can come from dB in future
+                    // .matches(/yeezy/i'),
+                    .matches(/yeezy/i),
+                    query('true_to_size').exists()
+                    .isInt()
+                ]
+        }
     }
 }
 
 module.exports = {
     getAll: _getAll,
     getShoeByName: _getShoeByName,
-    updateTrueToSize: _updateTrueToSize
+    updateTrueToSize: _updateTrueToSize,
+    validate
 };
