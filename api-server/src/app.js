@@ -21,8 +21,10 @@ app.get('/', (req, res) => {
     res.json({"message": "StockX API default endpoint"})
 })
 
-app.listen(3000, () => {
-    console.log("Server is listening on port", 3000)
-})
-
+if(!module.parent){
+    app.listen(3000, () => {
+        logger.info("Server is listening on port", 3000)
+    })
+}
+ 
 module.exports = app

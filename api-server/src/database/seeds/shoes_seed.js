@@ -25,4 +25,4 @@ exports.seed = async function(knex, Promise) {
         actual_size:6
       })
     })
-};
+}; 

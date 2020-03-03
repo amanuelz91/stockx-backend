@@ -8,7 +8,7 @@
   "private": true,
   "scripts": {
     "start": "nodemon ./src/app.js",
-    "test": "./node_modules/.bin/mocha -w ./src/test" 
+    "test": "mocha -w ./src/test"
   },
   "dependencies": {
     "chai-http": "^4.3.0",
@@ -16,6 +16,7 @@
     "eslint-plugin-mocha": "^6.3.0",
     "express": "^4.17.1",
     "knex": "^0.20.10",
+    "nodemon": "^2.0.2",
     "pg": "^7.18.2",
     "pino": "^5.17.0"
   },
