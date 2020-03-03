@@ -54,7 +54,7 @@ describe('API Routes', function() {
     describe('POST new shoe true to size to /shoes', function() {
         it('should update average true to size of shoe', function(done) {
             chai.request(server)
-            .post('/shoes/true_to_size?true_to_size=3&name=yeezy')
+            .post('/shoes/true_to_size?true_to_size=3&name=yeezy') 
             .end(function(err, res) {
                 res.should.have.status(200);
                 res.should.be.json;

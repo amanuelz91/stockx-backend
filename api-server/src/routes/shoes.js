@@ -1,4 +1,5 @@
 const {logAndThrow} = require('../utils')
+const logger = require('pino')()
 
 const express = require("express")
 const { validationResult } = require('express-validator');
@@ -23,8 +24,9 @@ router.get("/", async (req, res, next) => {
 
 router.post("/true_to_size", async (req, res, next) => {
     try{
-        const errors = validationResult(req); 
-        if (!errors.isEmpty()) {
+        const errors = shoes.validate(req); 
+        logger.info('true to size validation value',errors)
+        if (errors) {
             logAndThrow()
         }
         let {name,true_to_size} = req.query

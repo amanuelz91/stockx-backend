@@ -51,10 +51,10 @@ const validate = (method) => {
                     query('shoe').exists()
                     // Check if shoe exists in dB
                     // Hardcoded for now but can come from dB in future
-                    // .matches(/yeezy/i'),
-                    .matches(/yeezy/i),
+                    .matches(['yeezy','nike mag']),
+                    // .matches(/yeezy/i),
                     query('true_to_size').exists()
-                    .isInt()
+                    // .isInt()
                 ]
         }
     }
