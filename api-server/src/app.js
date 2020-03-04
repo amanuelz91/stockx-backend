@@ -2,6 +2,7 @@ require('dotenv').config()
 
 const logger = require('pino')()
 const PORT = require('./utils').returnPort()
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
