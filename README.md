@@ -21,7 +21,7 @@ This will start an API server on localhost:3000
 The API Endpoints are as follows
 
 | Type | Endpoint |     Params      |
-  GET    /shoes     shoeName (optional) Must be one of ["yeezy", "nike mag"] (case insensitive)
+| GET  | /shoes   | shoeName (optional) Must be one of ["yeezy", "nike mag"] (case insensitive) |
 
 <!-- 1. `GET /shoes`
     Query Params 
