@@ -37,7 +37,7 @@ const _updateTrueToSize = async(name,true_to_size) => {
 
         return _Shoes()
         .returning(['name','id','true_to_size_avg'])
-        .update({true_to_size_avg:`${new_true_to_size_avg}`,count:count+1})
+        .update({true_to_size_avg:`${new_true_to_size_avg}`,count:count})
         .whereRaw(`LOWER(name) = ?`,[`${name}`])
         .catch(e=>{throw(e)})
 
