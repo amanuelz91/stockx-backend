@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
     res.json({"message": "StockX API default endpoint"})
 })
 
-// Prevents spinning up new process tests in watch mode
+// Prevents spinning up new process when testing in watch mode
 if(!module.parent){
     app.listen(3000, () => {
         logger.info("Server is listening on port", 3000)
