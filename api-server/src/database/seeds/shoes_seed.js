@@ -14,7 +14,7 @@ exports.seed = async function(knex, Promise) {
       return knex('knex_shoes').insert({
         id:2,
         name: 'NIKE MAG',
-        true_to_size_avg: 2,
+        true_to_size_avg: 3,
         count:1
       });
     }).then(function(rows){

@@ -1,0 +1,27 @@
+version: "3.7"
+
+services:
+  db:
+    image: postgres
+    environment:
+      [POSTGRES_USER=amanuel,POSTGRES_PASSWORD=amanuel]
+    volumes:
+      - ./db/init/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+
+  web:
+    image: node:13
+    volumes:
+      - ./api-server:/usr/app
+    working_dir: /usr/app
+    depends_on:
+      - "db"
+    ports:
+      - "3000:3000"
+    command: ["./wait-for-it.sh", "-t", "60", "db:5432", "--", "./setup.sh"]
+    links:
+      - "db"
+
+
+  

@@ -1,36 +1,42 @@
-const {logAndThrow} = require('../utils')
-const logger = require('pino')()
-
 const express = require("express")
-const { validationResult } = require('express-validator');
 const router = express.Router()
+const { validationResult } = require('express-validator');
 
 const shoes = require('../models/shoes')
 
-router.get("/", async (req, res, next) => {
+const {logAndThrow} = require('../utils')
+
+router.get("/",shoes.validate('get_shoes_by_name'),async (req, res, next) => {
     try {
-        shoes.validate('getShoes')
-        if(req.query.shoe){
-            let shoe = await shoes.getShoeByName(req.query.shoe).catch(logAndThrow) 
+        const result = validationResult(req).array()
+        if(result.length>0){
+            // Dont access shoeName prior to validation
+            let {shoeName} = req.query
+            if(shoeName){
+                return logAndThrow('result in get_shoes_by_name',result)
+            } else{
+                let shoes_list = await shoes.getAll().catch(logAndThrow) 
+                res.send(shoes_list)
+            }
+        } else{
+            let {shoeName} = req.query
+            let shoe = await shoes.getShoeByName(shoeName).catch(logAndThrow) 
             res.send(shoe)
-        }else{
-            let shoes_list = await shoes.getAll().catch(logAndThrow) 
-            res.send(shoes_list)
-        }
+        }   
+        
     } catch(err) {
         next(err)
     }
 })
 
-router.post("/true_to_size", async (req, res, next) => {
+router.post("/true_to_size",shoes.validate('update_true_to_size'),async (req, res, next) => {
     try{
-        const errors = shoes.validate(req); 
-        logger.info('true to size validation value',errors)
-        if (errors) {
-            logAndThrow()
+        const result = validationResult(req).array()
+        if(result.length>0){
+            return logAndThrow('validation error',result)
         }
-        let {name,true_to_size} = req.query
-        let newAverage = await shoes.updateTrueToSize(name,true_to_size)
+        let {shoeName,true_to_size} = req.query
+        let newAverage = await shoes.updateTrueToSize(shoeName,true_to_size)
         res.send(newAverage)
     } catch(err) {
         next(err)

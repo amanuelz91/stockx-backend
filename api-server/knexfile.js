@@ -4,9 +4,12 @@ module.exports = {
   development: {
     client: 'pg',
     connection: {
-     host : '127.0.0.1',
-     user : 'amanuel',
-     password : 'amanuel',
+      // host : '127.0.0.0',
+      // host : '127.0.0.1',
+      // host : 'postgres',
+      host : 'db',
+      user : process.env.PG_USER,
+     password : process.env.PG_PASSWORD,
      database : 'dockerstockx_dev'
    },
    migrations: {
@@ -18,10 +21,14 @@ module.exports = {
   test: {
     client: 'pg',
     connection: {
-     host : '127.0.0.1',
-     user : 'amanuel',
-     password : 'amanuel',
-     database : 'dockerstockx_test'
+    //  host : '127.0.0.0',
+    //  host : '127.0.0.1',
+      // host : 'postgres',
+     host : 'db',
+    //  user : 'amanuel',
+     user : process.env.PG_USER,
+     password : process.env.PG_PASSWORD,
+     database : process.env.PG_PASSWORD
    },
    migrations: {
       directory: './src/database/migrations',
@@ -32,9 +39,12 @@ module.exports = {
   production: {
     client: 'pg',
     connection: {
-     host : '127.0.0.1',
-     user : 'amanuel',
-     password : 'amanuel',
+      // host : '127.0.0.0',
+      // host : '127.0.0.1',
+      // host : 'postgres',
+      host : 'db',
+     user : process.env.PG_USER,
+     password : process.env.PG_PASSWORD,
      database : 'dockerstockx_prod'
     },
     migrations: {

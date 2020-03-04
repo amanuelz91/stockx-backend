@@ -9,7 +9,7 @@
     "globals": {
         // "Atomics": "readonly",
         // "SharedArrayBuffer": "readonly",
-        "logger":"writable"
+        // "logger":"writable"
     },
     "parserOptions": {
         "ecmaVersion": 2018
