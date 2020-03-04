@@ -20,7 +20,10 @@ This will start an API server on localhost:3000
 
 The API Endpoints are as follows
 
-1. `GET /shoes`
+| Type | Endpoint |     Params      |
+  GET    /shoes     shoeName (optional) Must be one of ["yeezy", "nike mag"] (case insensitive)
+
+<!-- 1. `GET /shoes`
     Query Params 
         shoeName (optional)
             Must be one of ["yeezy", "nike mag"] (case insensitive)
@@ -30,4 +33,4 @@ The API Endpoints are as follows
         shoeName (required)
             Must be one of ["yeezy", "nike mag"] (case insensitive)
         true_to_size (required)
-            Must be one of [1,2,3,4,5]
+            Must be one of [1,2,3,4,5] -->
