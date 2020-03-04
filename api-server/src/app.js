@@ -17,7 +17,6 @@ app.use(function (req, res, next) {
   });
 
 app.use("/", routes)
-
 app.get('/', (req, res) => {
     res.json({"message": "StockX API default endpoint"})
 })
