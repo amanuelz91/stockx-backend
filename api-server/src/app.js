@@ -1,6 +1,7 @@
 require('dotenv').config()
 
 const logger = require('pino')()
+const PORT = require('./utils').returnPort()
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
@@ -10,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 app.use(function (req, res, next) {
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+    res.setHeader('Access-Control-Allow-Origin', `http://localhost:${PORT}`);
     next();
   });
 
@@ -22,8 +23,8 @@ app.get('/', (req, res) => {
 
 // Prevents spinning up of new process when testing in watch mode
 if(!module.parent){
-    app.listen(3000, () => {
-        logger.info("Server is listening on port", 3000)
+    app.listen(PORT, () => {
+        logger.info("Server is listening on port", PORT)
     })
 }
  

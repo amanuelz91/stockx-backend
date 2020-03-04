@@ -1,12 +1,8 @@
-const logger = require('pino')()
+const {logAndThrow} = require('./errors')
+const {returnPort} = require('./networking')
 
-// Error Handling Utilities
-
-const logAndThrow = (e,optional_message) => {
-    logger.info(e,optional_message)
-    throw(e)
-}
 
 module.exports = {
-    logAndThrow
+    logAndThrow,
+    returnPort
 }
