@@ -22,6 +22,10 @@ This will start an API server on localhost:3000
 
 [Documented Here](http://localhost:4000/graphql)
 
+## Example Request
+
+![Example Request](gql-request.png)
+
 <!-- The API Endpoints are as follows
 
 | Type | Endpoint |     Params      | Requirement | Options |
