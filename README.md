@@ -24,7 +24,7 @@ This will start an API server on localhost:3000
 
 ## Example Request
 
-![Example Request](gql-request.png)
+![](example-gql-request.png)
 
 <!-- The API Endpoints are as follows
 
