@@ -1,5 +1,7 @@
 
-# StockX Backend
+# StockX Backend GQL implementation
+
+### In Progress
 
 ## Instructions 
 
