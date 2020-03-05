@@ -1,6 +1,8 @@
 
 # StockX Backend
 
+### For Graphql implementation switch to `gql-server` branch 
+
 ## Instructions 
 
 ## Setup
