@@ -19,6 +19,7 @@ services:
       - "db"
     ports:
       - "3000:3000"
+      - "4000:4000"
     command: ["./wait-for-it.sh", "-t", "60", "db:5432", "--", "./setup.sh"]
     links:
       - "db"
