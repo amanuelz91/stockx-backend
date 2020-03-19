@@ -20,7 +20,7 @@ This will start an API server on localhost:3000
 
 ## GQL API
 
-[Documented Here](http://localhost:4000/graphql)
+First follow instructions to start API server then documentation will automatically be generated and served [Here](http://localhost:4000/graphql)
 
 ## Example Request
 
